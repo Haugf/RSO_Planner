@@ -1,0 +1,61 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css"  />
+<!--
+I need to make an event search with fields for the user to sepcify what theyre looking for.
+1. University
+2. DATe
+3. Type of event
+
+</fieldset>
+</fieldset>
+ -->
+</head>
+
+<body>
+
+<div id="wrapper">
+
+  <div id="menu2">
+    <a href="feed.php">Feed</a>
+    <a href="search.html">Search Event</a>
+    <a href="rso.php">RSOs</a>
+    <a href="create.php">Create Event</a>
+    <a href="login.php">Log out</a>
+  </div>
+
+  <div id="formDiv">
+  <form action="search_page.php">
+
+<label>Choose Univeristy...</lable><br>
+    <select class="inputFields" name="University">
+      <option value="UCF">University of Central Florida</option>
+      <option value="UF">Univeristy of Florida</option>
+      <option value="FAU">Florida Atlantic University</option>
+    </select>
+<br>
+<br>
+<label>Choose Event Type...</label><br>
+    <select class="inputFields" name="eventType">
+      <option value="social">Social</option>
+      <option value="fundrasing">Fundrasing</option>
+      <option value="technical">Technical</option>
+      <option value="rso">RSO Search</option>
+    </select>
+      <br>
+      <br>
+<label>Choose Date Range...</label>
+<br>
+<input type="date" name="toDate" max="2018-07-9" class="inputFields">
+<input type="date" name="fromDate" max="2019-07-9" class="inputFields">
+
+  <br>
+  <br>
+    <input type="submit" name="Search" class="theButtons">
+  </form>
+  </div>
+
+</div>
+</body>
+</html>

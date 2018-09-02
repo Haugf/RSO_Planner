@@ -1,0 +1,9 @@
+SELECT * FROM users WHERE Email like "jiexiong4159%";
+SELECT * FROM users WHERE Email like "%@%";
+SELECT * FROM event WHERE university_id="UCF" and type=1 ;
+SELECT avg(ratingscore) FROM rating GROUP BY event_id;
+SELECT * FROM users U, rso R WHERE R.RSO_id=1 AND R.email=U.Email;
+SELECT COUNT * FROM users U WHERE exists (SELECT R.event_id FROM rating R WHERE R.ratingscore=(select max(ratingscore) FROM rating ));
+SELECT COUNT * FROM event E GROUP by university_id;
+SELECT city event_id FROM university U, event E where U.city=E.Location;
+SELECT id FROM users Where Email='$Email;

@@ -1,0 +1,80 @@
+<html>
+<head>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDd1pOURY31WARbVFjzTx6wGQRjnqaY6s&callback=initMap">
+  </script>
+  <style>
+  #map{
+    height:400px;
+    width:100%;
+  }
+</style>
+</head>
+<body>
+
+  <form id="location-form">
+    Enter address
+    <input type="text" id="location-input">
+    <br>
+    <button type="submit">Submit</button>
+
+    <h1>My Google Map</h1>
+<div id="map"></div>
+
+<script>
+//get location form
+var locationForm = document.getElementById('location-form');
+
+//create global variables for longitude and latitude
+var latt, lngg;
+
+//Listen for submit
+locationForm.addEventListener('submit', geocode);
+//geocode function which will grab lat and lon from Google Maps API
+function geocode(e)
+{
+  e.preventDefault();
+
+  var location = document.getElementById('location-input').value;
+
+  axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+  params:{
+    address:location,
+    key:'AIzaSyCDd1pOURY31WARbVFjzTx6wGQRjnqaY6s'
+  }
+  })
+  .then(function(response){
+        // Log full response
+        console.log(response);
+
+        // Geometry
+        latt = response.data.results[0].geometry.location.lat;
+        lngg = response.data.results[0].geometry.location.lng;
+
+        console.log(latt);
+        console.log(lngg);
+        // Output to app
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+
+} //end of geocode
+
+function initMap()
+{
+  var options = {
+  zoom:8,
+  center:{lat:latt,lng:lngg}
+  }
+
+  console.log(window.latt);
+  console.log(window.lngg);
+// New map
+var map = new google.maps.Map(document.getElementById('map'), options);
+}
+</script>
+
+</body>
+</html>
